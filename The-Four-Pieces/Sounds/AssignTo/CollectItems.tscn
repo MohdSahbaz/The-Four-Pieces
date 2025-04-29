@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://imiekdri8hn0"]
+
+[ext_resource type="AudioStream" uid="uid://d1mrr333jaard" path="res://Sounds/collect_item.mp3" id="1_omxh3"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_omxh3")

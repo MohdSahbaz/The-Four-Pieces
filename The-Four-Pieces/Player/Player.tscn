@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://cloupsnfmxn86"]
+
+[ext_resource type="Script" uid="uid://dqu0hg8pd2eq3" path="res://Player/PlayerMovement.gd" id="1_3qydi"]
+[ext_resource type="PackedScene" uid="uid://imiekdri8hn0" path="res://Sounds/AssignTo/CollectItems.tscn" id="2_ddoul"]
+[ext_resource type="Script" uid="uid://5qhecvut82eq" path="res://Player/PlayerHead.gd" id="2_q3lat"]
+[ext_resource type="Script" uid="uid://d0cdlc3yh0f4o" path="res://Player/collecte_items.gd" id="3_tok1r"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_q3lat"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tok1r"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ddoul"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+script = ExtResource("1_3qydi")
+
+[node name="AudioStreamPlayer3D" parent="." instance=ExtResource("2_ddoul")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_q3lat")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_tok1r")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -0.2)
+script = ExtResource("2_q3lat")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("3_tok1r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_ddoul")

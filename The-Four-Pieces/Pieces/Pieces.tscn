@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6p6mnpen1ng4"]
+
+[ext_resource type="Script" uid="uid://qljevxfvrjhh" path="res://Pieces/pieces.gd" id="1_jbttx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvfvk"]
+albedo_color = Color(0.358206, 0.418303, 1, 1)
+emission_enabled = true
+emission = Color(0.395523, 0.0126286, 0.31602, 1)
+emission_energy_multiplier = 11.4
+emission_on_uv2 = true
+normal_scale = 4.5
+rim_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dpy4q"]
+size = Vector3(1, 1, 0.2)
+
+[node name="Pieces" type="Area3D" groups=["collectible"]]
+script = ExtResource("1_jbttx")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+use_collision = true
+size = Vector3(1, 1, 0.1)
+material = SubResource("StandardMaterial3D_wvfvk")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+operation = 2
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(0.773849, 0.622562, -0.116505, -0.601662, 0.780037, 0.171888, 0.19789, -0.0629188, 0.978203, -0.5, 0.4, 0)
+operation = 2
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 0, 0, 1, 0.5, 0.4, 0)
+operation = 2
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
+operation = 2
+radius = 0.1
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
+operation = 2
+radius = 0.1
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+operation = 2
+radius = 0.1
+height = 0.2
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.1, -0.4, 0)
+operation = 2
+radius = 0.1
+height = 0.2
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.1, -0.4, 0)
+operation = 2
+radius = 0.1
+height = 0.2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dpy4q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

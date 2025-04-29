@@ -1,0 +1,131 @@
+[gd_scene load_steps=9 format=3 uid="uid://bncujyvh0wqvi"]
+
+[ext_resource type="Texture2D" uid="uid://dy31y5vcloy7b" path="res://UI/StartGame/bg.png" id="1_8xls4"]
+[ext_resource type="Script" uid="uid://brju842hol1iu" path="res://UI/GameWin/game_win.gd" id="1_y4s2d"]
+[ext_resource type="AudioStream" uid="uid://b7sdnpiqtqctw" path="res://Sounds/GameWin.wav" id="3_b5bku"]
+
+[sub_resource type="FontVariation" id="FontVariation_0wr5j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y4s2d"]
+font = SubResource("FontVariation_0wr5j")
+font_size = 80
+font_color = Color(1, 0.655745, 0.293454, 1)
+outline_size = 5
+outline_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b5bku"]
+font_size = 20
+font_color = Color(1, 1, 0.286275, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bu27a"]
+font_size = 20
+font_color = Color(0.00319933, 0.118914, 0.0902446, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_8xls4"]
+
+[node name="Game_Win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y4s2d")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1158.0
+offset_bottom = 652.0
+texture = ExtResource("1_8xls4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 647.0
+color = Color(0, 0, 0, 0.733333)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -276.0
+offset_right = 169.0
+offset_bottom = -166.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You Win!"
+label_settings = SubResource("LabelSettings_y4s2d")
+
+[node name="Message" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -456.0
+offset_right = 135.0
+offset_bottom = -428.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Mission accomplished! Every piece is collected—well played!"
+label_settings = SubResource("LabelSettings_b5bku")
+
+[node name="CreatedBy" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -89.5
+offset_top = -52.0
+offset_right = 89.5
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Designed and developed by Sahbaz"
+label_settings = SubResource("LabelSettings_bu27a")
+
+[node name="Buttons" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = -23.0
+offset_right = 133.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
+layout_mode = 2
+
+[node name="Main Menu" type="Button" parent="Buttons/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+theme_override_fonts/font = SubResource("FontVariation_8xls4")
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="Buttons/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Main Menu")
+theme_override_fonts/font = SubResource("FontVariation_8xls4")
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_b5bku")
+autoplay = true
+
+[connection signal="pressed" from="Buttons/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

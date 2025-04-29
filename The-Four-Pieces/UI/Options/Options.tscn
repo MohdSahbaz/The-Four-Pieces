@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6dq2dsk5honc"]
+
+[ext_resource type="Script" uid="uid://chibv8uhmwlea" path="res://UI/Options/options.gd" id="1_i0v4v"]
+[ext_resource type="Texture2D" uid="uid://dy31y5vcloy7b" path="res://UI/StartGame/bg.png" id="2_kfgdk"]
+[ext_resource type="AudioStream" uid="uid://d0l6ygx2jnjdu" path="res://Sounds/Background.wav" id="3_lcktm"]
+
+[sub_resource type="FontVariation" id="FontVariation_kfgdk"]
+
+[sub_resource type="FontVariation" id="FontVariation_0wr5j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lcktm"]
+font = SubResource("FontVariation_0wr5j")
+font_size = 80
+font_color = Color(1, 0.655745, 0.293454, 1)
+outline_size = 5
+outline_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kfgdk"]
+font_size = 20
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i3xpw"]
+font_size = 20
+font_color = Color(0.00319933, 0.118914, 0.0902446, 1)
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 647.0
+script = ExtResource("1_i0v4v")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1158.0
+offset_bottom = 652.0
+texture = ExtResource("2_kfgdk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 647.0
+color = Color(0, 0, 0, 0.733333)
+
+[node name="Buttons" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -24.5
+offset_right = 111.0
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="Buttons/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_kfgdk")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[node name="Game Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -301.5
+offset_top = 64.0
+offset_right = 301.5
+offset_bottom = 174.0
+grow_horizontal = 2
+text = "The Four Pieces"
+label_settings = SubResource("LabelSettings_lcktm")
+
+[node name="Error" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.5
+offset_top = -88.5
+offset_right = 250.5
+offset_bottom = -65.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "This feature is under development. We appreciate your patience!"
+label_settings = SubResource("LabelSettings_kfgdk")
+
+[node name="CreatedBy" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -89.5
+offset_top = -52.0
+offset_right = 89.5
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Designed and developed by Sahbaz"
+label_settings = SubResource("LabelSettings_i3xpw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lcktm")
+autoplay = true
+
+[connection signal="pressed" from="Buttons/VBoxContainer/Back" to="." method="_on_back_pressed"]

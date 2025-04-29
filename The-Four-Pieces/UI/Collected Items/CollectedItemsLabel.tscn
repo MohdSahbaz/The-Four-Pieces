@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctchpymcbb2x7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gp34u"]
+font_size = 25
+font_color = Color(0.403922, 1, 0.0980392, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 230.0
+offset_bottom = 51.0
+size_flags_horizontal = 4
+text = "Collected Items: 0"
+label_settings = SubResource("LabelSettings_gp34u")
